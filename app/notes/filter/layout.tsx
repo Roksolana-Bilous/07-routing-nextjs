@@ -4,7 +4,7 @@ import SidebarNotes from "./@sidebar/default";
 
 type NotesClientProps = {
     children: React.ReactNode;
-    modal: React.ReactNode;
+    modal?: React.ReactNode;
 }
 
 const NotesLayout = ({ children, modal }: NotesClientProps) => {
