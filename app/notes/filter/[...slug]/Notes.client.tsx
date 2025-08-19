@@ -11,9 +11,9 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 import css from "./Notes.module.css";
 
 interface NotesClientProps {
-    initialNotes: FetchNotesResponse;
+  initialNotes: FetchNotesResponse;
+  tag?: string;
 }
-
 export default function NotesClient({ initialNotes }: NotesClientProps) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');

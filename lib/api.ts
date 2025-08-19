@@ -12,7 +12,8 @@ if (!myKey) {
 export interface FetchNotesParams {
     page?: number;
     perPage?: number;
-    search?: string;
+  search?: string;
+  tag?: string;
 }
 
 export interface FetchNotesResponse {
@@ -27,18 +28,24 @@ interface RawFetchNotesResponse {
   totalPages: number;
 }
 
-export const fetchNotes = async ({page = 1, perPage = 12, search}: FetchNotesParams): Promise<FetchNotesResponse> => {
-    const response = await axios.get<RawFetchNotesResponse>('/notes', {
-        params: {
-            page,
-            perPage,
-            ...(search !== '' && { search: search }),
-        },
-        });
-    
-    const raw = response.data;
+export const fetchNotes = async ({
+  page = 1,
+  perPage = 12,
+  search,
+  tag
+}: FetchNotesParams): Promise<FetchNotesResponse> => {
+  const response = await axios.get<RawFetchNotesResponse>('/notes', {
+    params: {
+      page,
+      perPage,
+      ...(search && { search }),
+      ...(tag && tag !== "All" && { tag }),
+    },
+  });
 
-    return {
+  const raw = response.data;
+
+  return {
     page,
     perPage,
     data: raw.notes,
