@@ -1,13 +1,10 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import css from "./LayoutNotes.module.css";
 import SidebarNotes from "./@sidebar/default";
 
-export default function NotesLayout({
-  children,
-  modal,
-}: {
-  children: ReactNode;
-  modal: ReactNode;
+export default function NotesLayout(props: {
+  children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <section className={css.container}>
@@ -15,9 +12,10 @@ export default function NotesLayout({
         <SidebarNotes />
       </aside>
       <div className={css.notesWrapper}>
-        {children}
-        {modal}
+        {props.children}
+        {props.modal}
       </div>
     </section>
   );
 }
+
