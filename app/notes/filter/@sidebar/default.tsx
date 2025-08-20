@@ -1,7 +1,7 @@
 import Link from "next/link";
 import css from "./SidebarNotes.module.css";
 
-const categories = ["All", "Work", "Personal", "Meeting", "Shopping", "Todo"];
+const categories = ["All","Todo", "Work", "Personal", "Meeting", "Shopping"];
 export default function SidebarNotes() {
     return (
         <div className={css.sidebar}>
